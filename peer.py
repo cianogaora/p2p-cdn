@@ -1,12 +1,12 @@
 import socket
+import threading
 
 class Peer:
-    def __init__(self, ip, port):
-        self.ip = ip
-        self.port = port
+    def __init__(self):
+        self.id = None
 
-    def connect(self):
-        pass
+    def join_network(self, server_addr):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def disconnect(self):
         pass
@@ -19,4 +19,9 @@ class Peer:
 
 
 if __name__ == '__main__':
-    peer = Peer('')
+    with open("ipconfig.txt", "r") as f:
+        addr = f.read()
+
+    peer = Peer()
+    peer.join_network(addr)
+
